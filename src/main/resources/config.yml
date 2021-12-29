@@ -1,0 +1,176 @@
+
+# process
+bungeecord: false
+
+processOn: # ignore if bungeecord is set on false
+  - server1
+  - server2
+  # - proxy # uncomment in order to process rewards on the proxy
+
+
+# sites
+
+sites:
+  0:
+    name: minecraft-mp.com
+    service: Minecraft-MP.com
+    url: "?"
+    check:
+      type: fromHour
+      timezone: GMT-5:00
+      hh: 00
+      mm: 00
+      ss: 00
+    messages:
+      received: '["",{"text":"→","italic":true,"color":"light_purple"},{"text":" you''ve voted on ","italic":true,"color":"gray"},{"text":"%siteName%","italic":true,"underlined":true,"color":"light_purple"}]'
+      didntVote: '["",{"text":"→","italic":true,"color":"light_purple"}," ",{"text":"%siteName%","italic":true,"underlined":true,"color":"light_purple","clickEvent":{"action":"open_url","value":"%url%"}}]'
+      voted: '["",{"text":"→","italic":true,"color":"light_purple"}," ",{"text":"%siteName%","italic":true,"strikethrough":true,"color":"dark_gray"}]'
+    rewards:
+      keepVoting:
+        messages:
+          - '["",{"text":"vote on all sites to get the rewards"}]'
+  1:
+    name: minecraftservers.org
+    service: MinecraftServers.org
+    url: "?"
+    check:
+      type: afterCooldown
+      hh: 24
+      mm: 00
+      ss: 00
+    messages:
+      received: '["",{"text":"→","italic":true,"color":"light_purple"},{"text":" you''ve voted on ","italic":true,"color":"gray"},{"text":"%siteName%","italic":true,"underlined":true,"color":"light_purple"}]'
+      didntVote: '["",{"text":"→","italic":true,"color":"light_purple"}," ",{"text":"%siteName%","italic":true,"underlined":true,"color":"light_purple","clickEvent":{"action":"open_url","value":"%url%"}}]'
+      voted: '["",{"text":"→","italic":true,"color":"light_purple"}," ",{"text":"%siteName%","italic":true,"strikethrough":true,"color":"dark_gray"}]'
+    rewards:
+      keepVoting:
+        messages:
+          - '["",{"text":"vote on all sites to get the rewards"}]'
+  2:
+    name: topminecraftservers.org
+    service: TopMinecraftServers.org
+    url: "?"
+    check:
+      type: fromHour
+      timezone: GMT-5:00
+      hh: 00
+      mm: 00
+      ss: 00
+    messages:
+      received: '["",{"text":"→","italic":true,"color":"light_purple"},{"text":" you''ve voted on ","italic":true,"color":"gray"},{"text":"%siteName%","italic":true,"underlined":true,"color":"light_purple"}]'
+      didntVote: '["",{"text":"→","italic":true,"color":"light_purple"}," ",{"text":"%siteName%","italic":true,"underlined":true,"color":"light_purple","clickEvent":{"action":"open_url","value":"%url%"}}]'
+      voted: '["",{"text":"→","italic":true,"color":"light_purple"}," ",{"text":"%siteName%","italic":true,"strikethrough":true,"color":"dark_gray"}]'
+    rewards:
+      keepVoting:
+        messages:
+          - '["",{"text":"vote on all sites to get the rewards"}]'
+  3:
+    name: topminecraftservers.org
+    service: TopMinecraftServers.org
+    url: "?"
+    check:
+      type: afterCooldown
+      hh: 24
+      mm: 00
+      ss: 00
+    messages:
+      received: '["",{"text":"→","italic":true,"color":"light_purple"},{"text":" you''ve voted on ","italic":true,"color":"gray"},{"text":"%siteName%","italic":true,"underlined":true,"color":"light_purple"}]'
+      didntVote: '["",{"text":"→","italic":true,"color":"light_purple"}," ",{"text":"%siteName%","italic":true,"underlined":true,"color":"light_purple","clickEvent":{"action":"open_url","value":"%url%"}}]'
+      voted: '["",{"text":"→","italic":true,"color":"light_purple"}," ",{"text":"%siteName%","italic":true,"strikethrough":true,"color":"dark_gray"}]'
+    rewards:
+      keepVoting:
+        messages:
+          - '["",{"text":"vote on all sites to get the rewards"}]'
+  4:
+    name: topminecraftservers.org
+    service: TopMinecraftServers.org
+    url: "?"
+    check:
+      type: fromHour
+      timezone: GMT-1:00
+      hh: 00
+      mm: 00
+      ss: 00
+    messages:
+      received: '["",{"text":"→","italic":true,"color":"light_purple"},{"text":" you''ve voted on ","italic":true,"color":"gray"},{"text":"%siteName%","italic":true,"underlined":true,"color":"light_purple"}]'
+      didntVote: '["",{"text":"→","italic":true,"color":"light_purple"}," ",{"text":"%siteName%","italic":true,"underlined":true,"color":"light_purple","clickEvent":{"action":"open_url","value":"%url%"}}]'
+      voted: '["",{"text":"→","italic":true,"color":"light_purple"}," ",{"text":"%siteName%","italic":true,"strikethrough":true,"color":"dark_gray"}]'
+    rewards:
+      keepVoting:
+        messages:
+          - '["",{"text":"vote on all sites to get the rewards"}]'
+
+messages:
+  header: '{"text":"Here you have a list of the sites you can vote on:","underlined":true,"color":"white"}'
+  footer: '{"text":"Thanks for your interest on voting for the server!","underlined":true,"color":"white"}'
+
+forwardSettings:
+  passive: false  # won't process any vote rewards, but will listen for events, useful for secondary, non-primary, non-vote-processing redis instances. don't set to false on your main proxy!
+  bungee: false   # [for spigot servers hosted under bungeecord] will ignore events from NuVotifier and only listen for messages from the proxy, which should be a non-passive one
+
+reminders:
+  afterLogin:
+    0:
+      message: '{"text":"Please, consider voting for the server :)","underlined":true,"color":"white"}'
+      delay: 5  # will show after 5 seconds of logging in if the player hasn't voted on all sites
+    1:
+      message: '{"text":"Please, consider voting for the server :)","underlined":true,"color":"white"}'
+      delay: 6000  # will show after 10 minutes of logging in if the player hasn't voted on all sites
+  whenAble:
+    message: '{"text":"You can now vote again!","underlined":true,"color":"white"}'
+
+otherRewards:
+  allSites:
+    exampleWithPermission:
+      permission: "openvoterewards.reward.vip"
+      messages:
+        - '["",{"text":"this will only appear if you have the permission openvoterewards.reward.vip"}]'
+    itemExample: # won't work on the proxy (if it is processing the rewards!)
+      chance:
+        diamonds:
+          percent: 10
+          items:
+            DIAMOND:
+              quantity: 10
+              name: "Wow, diamonds!"
+              lore:
+                - "lore line 1"
+                - "lore line 2"
+        apple:
+          percent: 30
+          items:
+            APPLE:
+              quantity: 15
+        default:
+          messages:
+            - '["",{"text":"you got unlucky and didn''t get any items"}]'
+    commandExample:
+      commands:
+        - "lp user %username% parent set permission <example>"
+      messages:
+        - '["",{"text":"added perm <example>"}]'
+    moneyExample: # won't work on the proxy (if it is processing the rewards!)
+      chance:
+        lowChance:
+          percent: 10
+          messages:
+            - '["",{"text":"you got extremely lucky and got $%money%"}]'
+          money:
+            decimal: 0 # no decimal places
+            min: 1000
+            max: 2000
+        highChance:
+          percent: 30
+          messages:
+            - '["",{"text":"you got very lucky and got $%money%"}]'
+          money:
+            decimal: 0 # no decimal places
+            min: 100
+            max: 200
+        default:
+          messages:
+            - '["",{"text":"you got lucky and got $%money%"}]'
+          money:
+            decimal: 0 # no decimal places
+            min: 0
+            max: 100

@@ -1,11 +1,9 @@
 package co.purevanilla.mcplugins.openvoterewards.api.site;
 
-import co.purevanilla.mcplugins.openvoterewards.api.site.siteCheck.SiteCheck;
+import co.purevanilla.mcplugins.openvoterewards.api.site.check.SiteCheck;
 import org.bukkit.configuration.ConfigurationSection;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 public class Site {
 

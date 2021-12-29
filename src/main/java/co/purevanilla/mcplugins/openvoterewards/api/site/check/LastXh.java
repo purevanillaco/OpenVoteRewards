@@ -1,4 +1,4 @@
-package co.purevanilla.mcplugins.openvoterewards.api.site.siteCheck;
+package co.purevanilla.mcplugins.openvoterewards.api.site.check;
 
 public class LastXh extends SiteCheck{
 

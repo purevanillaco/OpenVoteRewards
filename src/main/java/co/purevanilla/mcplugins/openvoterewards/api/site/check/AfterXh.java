@@ -1,4 +1,4 @@
-package co.purevanilla.mcplugins.openvoterewards.api.site.siteCheck;
+package co.purevanilla.mcplugins.openvoterewards.api.site.check;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
